@@ -1,6 +1,6 @@
 
 CREATE DATABASE IF NOT EXISTS sistem_gaji;
-USE sistem_gaji;
+USE management_gaji;
 
 CREATE TABLE jabatan (
   id INT AUTO_INCREMENT PRIMARY KEY,
