@@ -31,7 +31,7 @@
                         <td>" . $row['nama_jabatan'] . "</td>
                         <td>Rp " . number_format(is_numeric($row['gaji_pokok']) ? $row['gaji_pokok'] : 0, 0, ',', '.') . "</td>
                         <td>
-                        <a href='jabatan_edit.php?id=" . $row['id'] . "' class='btn btn-sm btn-warning'>Edit</a>
+                        <a href='jabatan_edit.php?id=" . $row['id'] . "' class='btn btn-sm btn-warning'>Edit</a> <a href="jabatan_detail.php?id=<?= $d['id'] ?>" class="btn btn-info btn-sm">Detail</a>
                         <a href='jabatan_hapus.php?id=" . $row['id'] . "' class='btn btn-sm btn-danger' onclick=\"return confirm('Yakin ingin menghapus?')\">Hapus</a>
                         </td>
                     </tr>";

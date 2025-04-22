@@ -43,7 +43,7 @@ include 'includes\sidebar.php';
                 <td><?= $data['bulan'] ?></td>
                 <td>Rp <?= number_format($data['total_gaji'], 0, ',', '.') ?></td>
                 <td>
-                    <a href="gaji_edit.php?id=<?= $data['id'] ?>" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="gaji_edit.php?id=<?= $data['id'] ?>" class="btn btn-warning btn-sm">Edit</a> <a href="gaji_detail.php?id=<?= $d['id'] ?>" class="btn btn-info btn-sm">Detail</a>
                     <a href="gaji_hapus.php?id=<?= $data['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus?')">Hapus</a>
                 </td>
             </tr>

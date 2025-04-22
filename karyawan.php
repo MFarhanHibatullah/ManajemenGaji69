@@ -46,7 +46,7 @@
                         <h5 class="card-title mb-1">' . $row['nama'] . '</h5>
                         <div class="text-warning mb-1">Rating: ' . $bintang . '</div>
                         <p class="card-text"><strong>' . $row['nama_jabatan'] . '</strong></p>
-                        <a href="karyawan_edit.php?id=' . $row['id'] . '" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="karyawan_detail.php?id=' . $row['id'] . '" class="btn btn-info btn-sm">Detail</a>
                         <a href="karyawan_hapus.php?id=' . $row['id'] . '" class="btn btn-danger btn-sm" onclick="return confirm(\'Yakin ingin menghapus?\')">Hapus</a>
                     </div>
                 </div>';

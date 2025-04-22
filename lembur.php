@@ -34,7 +34,7 @@
                         <td>' . $row['nama_jabatan'] . '</td>
                         <td>Rp ' . number_format($row['tarif_per_jam'], 0, ',', '.') . '</td>
                         <td>
-                            <a href="lembur_edit.php?id=' . $row['id'] . '" class="btn btn-sm btn-warning">Edit</a>
+                            <a href="lembur_edit.php?id=' . $row['id'] . '" class="btn btn-sm btn-warning">Edit</a> <a href="lembur_detail.php?id=<?= $d['id'] ?>" class="btn btn-info btn-sm">Detail</a>
                             <a href="lembur_hapus.php?id=' . $row['id'] . '" class="btn btn-sm btn-danger" onclick="return confirm(\'Yakin ingin menghapus?\')">Hapus</a>
                         </td>
                     </tr>';
