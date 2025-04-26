@@ -12,9 +12,9 @@
     <div class="p-4 w-100">
         <h3>Daftar Rating</h3>
         <a href="rating_tambah.php" class="btn btn-primary mb-3">+ Tambah Rating</a>
-        <table class="table table-bordered table-striped">
+        <table class="table table-bordered table table-hover">
             <thead>
-                <tr>
+                <tr class="table-dark">
                     <th>No</th>
                     <th>Nama Karyawan</th>
                     <th>Bulan</th>
@@ -24,23 +24,25 @@
             </thead>
             <tbody>
                 <?php
-                $no = 1;
-                $query = mysqli_query($conn, "SELECT rating.*, karyawan.nama FROM rating 
-                                              JOIN karyawan ON rating.karyawan_id = karyawan.id 
-                                              ORDER BY rating.id DESC");
-                while ($row = mysqli_fetch_assoc($query)) {
-                    echo '
-                    <tr>
-                        <td>' . $no++ . '</td>
-                        <td>' . $row['nama'] . '</td>
-                        <td>' . $row['bulan'] . '</td>
-                        <td>' . $row['nilai_rating'] . '</td>
-                        <td>
-                            <a href="rating_edit.php?id=' . $row['id'] . '" class="btn btn-sm btn-warning">Edit</a> <a href="rating_detail.php?id=<?= $d['id'] ?>" class="btn btn-info btn-sm">Detail</a>
-                            <a href="rating_hapus.php?id=' . $row['id'] . '" class="btn btn-sm btn-danger" onclick="return confirm(\'Yakin ingin menghapus?\')">Hapus</a>
-                        </td>
-                    </tr>';
-                }
+                    $no = 1;
+                    $query = mysqli_query($conn, "SELECT rating.*, karyawan.nama FROM rating 
+                        JOIN karyawan ON rating.karyawan_id = karyawan.id 
+                        ORDER BY rating.id DESC");
+
+                    while ($row = mysqli_fetch_assoc($query)) {
+                        echo '
+                        <tr>
+                            <td>' . $no++ . '</td>
+                            <td>' . $row['nama'] . '</td>
+                            <td>' . $row['bulan'] . '</td>
+                            <td>' . $row['nilai_rating'] . '</td>
+                            <td>
+                                <a href="rating_edit.php?id=' . $row['id'] . '" class="btn btn-sm btn-warning">Edit</a>
+                                <a href="rating_detail.php?id=' . $row['id'] . '" class="btn btn-sm btn-info">Detail</a>
+                                <a href="rating_hapus.php?id=' . $row['id'] . '" class="btn btn-sm btn-danger" onclick="return confirm(\'Yakin ingin menghapus data ini?\')">Hapus</a>
+                            </td>
+                        </tr>';
+                    }
                 ?>
             </tbody>
         </table>

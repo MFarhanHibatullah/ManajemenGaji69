@@ -3,6 +3,7 @@ include 'koneksi.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nama = $_POST['nama'];
+    $jenis_kelamin = $_POST['jenis_kelamin'];
     $jabatan_id = $_POST['jabatan_id'];
     $alamat = $_POST['alamat'];
     $no_hp = $_POST['no_hp'];
@@ -18,13 +19,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Simpan data karyawan
-    $query = mysqli_query($conn, "INSERT INTO karyawan (nama, jabatan_id, alamat, no_hp, foto) 
-                                  VALUES ('$nama', '$jabatan_id', '$alamat', '$no_hp', '$foto')");
+    $query = mysqli_query($conn, "INSERT INTO karyawan (nama, jenis_kelamin, jabatan_id, alamat, no_hp, foto) 
+                                  VALUES ('$nama', '$jenis_kelamin', '$jabatan_id', '$alamat', '$no_hp', '$foto')");
     if ($query) {
         $karyawan_id = mysqli_insert_id($conn);
         $bulan = date('Y-m');
 
-        // Simpan data rating
+        // Simpan data rating 
         mysqli_query($conn, "INSERT INTO rating (karyawan_id, bulan, nilai_rating) 
                              VALUES ('$karyawan_id', '$bulan', '$nilai_rating')");
 
@@ -53,6 +54,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <label class="form-label">Nama</label>
                 <input type="text" name="nama" class="form-control" required>
             </div>
+            <div class="mb-3">
+                <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
+                <select class="form-select" id="jenis_kelamin" name="jenis_kelamin" required>
+                    <option value="">-- Pilih Jenis Kelamin --</option>
+                    <option value="Laki-laki">Laki-laki</option>
+                    <option value="Perempuan">Perempuan</option>
+                </select>
+            </div>
+
             <div class="mb-3">
                 <label class="form-label">Jabatan</label>
                 <select name="jabatan_id" class="form-select" required>

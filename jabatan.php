@@ -12,9 +12,9 @@
     <div class="p-4 w-100">
         <h2>Daftar Jabatan</h2>
         <a href="jabatan_tambah.php" class="btn btn-primary mb-3">+ Tambah Jabatan</a>
-        <table class="table table-bordered">
+        <table class="table table-bordered table table-hover">
             <thead>
-                <tr>
+                <tr class="table-dark">
                     <th>No</th>
                     <th>Nama Jabatan</th>
                     <th>Gaji Pokok</th>
@@ -23,20 +23,26 @@
             </thead>
             <tbody>
                 <?php
-                $no = 1;
-                $query = mysqli_query($conn, "SELECT * FROM jabatan");
-                while ($row = mysqli_fetch_assoc($query)) {
-                    echo "<tr>
-                        <td>" . $no . "</td>
-                        <td>" . $row['nama_jabatan'] . "</td>
-                        <td>Rp " . number_format(is_numeric($row['gaji_pokok']) ? $row['gaji_pokok'] : 0, 0, ',', '.') . "</td>
-                        <td>
-                        <a href='jabatan_edit.php?id=" . $row['id'] . "' class='btn btn-sm btn-warning'>Edit</a> <a href="jabatan_detail.php?id=<?= $d['id'] ?>" class="btn btn-info btn-sm">Detail</a>
-                        <a href='jabatan_hapus.php?id=" . $row['id'] . "' class='btn btn-sm btn-danger' onclick=\"return confirm('Yakin ingin menghapus?')\">Hapus</a>
-                        </td>
-                    </tr>";
-                    $no++;
-                }
+                    $no = 1;
+                    $query = mysqli_query($conn, "SELECT * FROM jabatan");
+
+                    if ($query && mysqli_num_rows($query) > 0) {
+                        while ($row = mysqli_fetch_assoc($query)) {
+                            echo "<tr>
+                                <td>" . $no . "</td>
+                                <td>" . $row['nama_jabatan'] . "</td>
+                                <td>Rp " . number_format(is_numeric($row['gaji_pokok']) ? $row['gaji_pokok'] : 0, 0, ',', '.') . "</td>
+                                <td>
+                                    <a href='jabatan_edit.php?id=" . $row['id'] . "' class='btn btn-sm btn-warning'>Edit</a>
+                                    <a href='jabatan_detail.php?id=" . $row['id'] . "' class='btn btn-sm btn-info'>Detail</a>
+                                    <a href='jabatan_hapus.php?id=" . $row['id'] . "' class='btn btn-sm btn-danger' onclick=\"return confirm('Yakin ingin menghapus data ini?')\">Hapus</a>
+                                </td>
+                            </tr>";
+                            $no++;
+                        }
+                    } else {
+                        echo "<tr><td colspan='4' class='text-center'>Tidak ada data</td></tr>";
+                    }
                 ?>
             </tbody>
         </table>

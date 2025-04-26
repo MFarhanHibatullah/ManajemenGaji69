@@ -14,6 +14,7 @@ $foto_lama = $karyawan['foto'];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nama = $_POST['nama'];
+    $jenis_kelamin = $_POST['jenis_kelamin'];
     $jabatan_id = $_POST['jabatan_id'];
     $alamat = $_POST['alamat'];
     $no_hp = $_POST['no_hp'];
@@ -31,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     $update = mysqli_query($conn, "UPDATE karyawan SET 
-        nama = '$nama', jabatan_id = '$jabatan_id', 
+        nama = '$nama', jenis_kelamin = '$jenis_kelamin', jabatan_id = '$jabatan_id', 
         alamat = '$alamat', no_hp = '$no_hp', foto = '$foto'
         WHERE id = $id");
 
@@ -69,6 +70,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <label class="form-label">Nama</label>
                 <input type="text" name="nama" class="form-control" value="<?= $karyawan['nama'] ?>" required>
             </div>
+            <div class="mb-3">
+                <label class="form-label">Jenis Kelamin</label>
+                <select name="jenis_kelamin" class="form-select" required>
+                    <option value="">-- Pilih Jenis Kelamin --</option>
+                    <option value="Laki-laki" <?= $karyawan['jenis_kelamin'] == 'Laki-laki' ? 'selected' : '' ?>>Laki-laki</option>
+                    <option value="Perempuan" <?= $karyawan['jenis_kelamin'] == 'Perempuan' ? 'selected' : '' ?>>Perempuan</option>
+                </select>
+            </div>
+
             <div class="mb-3">
                 <label class="form-label">Jabatan</label>
                 <select name="jabatan_id" class="form-select" required>

@@ -12,12 +12,14 @@
     <div class="p-4 w-100">
         <h3>Daftar Tarif Lembur</h3>
         <a href="lembur_tambah.php" class="btn btn-primary mb-3">+ Tambah Tarif</a>
-        <table class="table table-bordered table-striped">
+        <table class="table table-bordered table-hover">
             <thead>
                 <tr>
                     <th>No</th>
                     <th>Nama Jabatan</th>
                     <th>Tarif Per Jam</th>
+                    <th>Jumlah Jam</th>
+                    <th>Total Lembur</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -28,14 +30,18 @@
                                               JOIN jabatan ON lembur.jabatan_id = jabatan.id 
                                               ORDER BY lembur.id DESC");
                 while ($row = mysqli_fetch_assoc($query)) {
+                    $total = $row['tarif_per_jam'] * $row['jumlah_jam'];
                     echo '
                     <tr>
                         <td>' . $no++ . '</td>
                         <td>' . $row['nama_jabatan'] . '</td>
                         <td>Rp ' . number_format($row['tarif_per_jam'], 0, ',', '.') . '</td>
+                        <td>' . $row['jumlah_jam'] . ' jam</td>
+                        <td>Rp ' . number_format($total, 0, ',', '.') . '</td>
                         <td>
-                            <a href="lembur_edit.php?id=' . $row['id'] . '" class="btn btn-sm btn-warning">Edit</a> <a href="lembur_detail.php?id=<?= $d['id'] ?>" class="btn btn-info btn-sm">Detail</a>
-                            <a href="lembur_hapus.php?id=' . $row['id'] . '" class="btn btn-sm btn-danger" onclick="return confirm(\'Yakin ingin menghapus?\')">Hapus</a>
+                            <a href="lembur_edit.php?id=' . $row['id'] . '" class="btn btn-sm btn-warning">Edit</a>
+                            <a href="lembur_detail.php?id=' . $row['id'] . '" class="btn btn-sm btn-info">Detail</a>
+                            <a href="lembur_hapus.php?id=' . $row['id'] . '" class="btn btn-sm btn-danger" onclick="return confirm(\'Yakin ingin menghapus data ini?\')">Hapus</a>
                         </td>
                     </tr>';
                 }

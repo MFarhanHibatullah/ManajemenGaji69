@@ -1,44 +1,50 @@
-
-CREATE DATABASE IF NOT EXISTS sistem_gaji;
-USE management_gaji;
-
-CREATE TABLE jabatan (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  nama_jabatan VARCHAR(100) NOT NULL,
-  gaji_pokok DECIMAL(15,2) NOT NULL
+-- Tabel: jabatan
+CREATE TABLE management_gaji_jabatan (
+    id INT(11) AUTO_INCREMENT PRIMARY KEY,
+    nama_jabatan VARCHAR(100),
+    gaji_pokok INT(11),
+    deskripsi TEXT
 );
 
-CREATE TABLE karyawan (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  nama VARCHAR(100) NOT NULL,
-  alamat TEXT,
-  no_hp VARCHAR(20),
-  jabatan_id INT,
-  foto VARCHAR(255),
-  FOREIGN KEY (jabatan_id) REFERENCES jabatan(id)
+-- Tabel: karyawan
+CREATE TABLE management_gaji_karyawan (
+    id INT(11) AUTO_INCREMENT PRIMARY KEY,
+    nama VARCHAR(100),
+    jenis_kelamin VARCHAR(10),
+    jabatan VARCHAR(100),
+    alamat TEXT,
+    no_hp VARCHAR(20),
+    foto VARCHAR(255),
+    jabatan_id INT(11),
+    FOREIGN KEY (jabatan_id) REFERENCES management_gaji_jabatan(id)
 );
 
-CREATE TABLE rating (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  karyawan_id INT,
-  bulan VARCHAR(20),
-  nilai_rating INT,
-  FOREIGN KEY (karyawan_id) REFERENCES karyawan(id)
+-- Tabel: lembur
+CREATE TABLE management_gaji_lembur (
+    id INT(11) AUTO_INCREMENT PRIMARY KEY,
+    karyawan_id INT(11),
+    bulan VARCHAR(20),
+    jabatan_id INT(11),
+    tarif_per_jam INT(11),
+    jumlah_jam INT(11),
+    FOREIGN KEY (karyawan_id) REFERENCES management_gaji_karyawan(id),
+    FOREIGN KEY (jabatan_id) REFERENCES management_gaji_jabatan(id)
 );
 
-CREATE TABLE lembur (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  karyawan_id INT,
-  bulan VARCHAR(20),
-  jam_lembur INT,
-  tarif_per_jam DECIMAL(15,2),
-  FOREIGN KEY (karyawan_id) REFERENCES karyawan(id)
+-- Tabel: rating
+CREATE TABLE management_gaji_rating (
+    id INT(11) AUTO_INCREMENT PRIMARY KEY,
+    karyawan_id INT(11),
+    bulan VARCHAR(20),
+    nilai_rating INT(11),
+    FOREIGN KEY (karyawan_id) REFERENCES management_gaji_karyawan(id)
 );
 
-CREATE TABLE gaji (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  karyawan_id INT,
-  bulan VARCHAR(20),
-  total_gaji DECIMAL(15,2),
-  FOREIGN KEY (karyawan_id) REFERENCES karyawan(id)
+-- Tabel: gaji
+CREATE TABLE management_gaji_gaji (
+    id INT(11) AUTO_INCREMENT PRIMARY KEY,
+    karyawan_id INT(11),
+    bulan VARCHAR(20),
+    total_gaji INT(11),
+    FOREIGN KEY (karyawan_id) REFERENCES management_gaji_karyawan(id)
 );
