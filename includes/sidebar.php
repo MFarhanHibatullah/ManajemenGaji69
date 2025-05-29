@@ -9,7 +9,7 @@
         <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 250px; height: 100vh;">
             <a href="dashboard.php" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                 <img src="assets/img/logo-bulat.png" alt="Logo" width="60" class="me-2" style="border-radius: 50%;">
-                <span class="fs-6 fw-bold">SISTEM MANAJEMEN GAJI</span>
+                <span class="fs-6 fw-bold">PT.FARHANTEC INNOVASI</span>
             </a>
             <hr>
             <ul class="nav nav-pills flex-column mb-auto">

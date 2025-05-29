@@ -52,7 +52,10 @@ if (isset($_POST['update'])) {
                 <label class="form-label">Jumlah Jam</label>
                 <input type="number" name="jumlah_jam" value="<?= $data['jumlah_jam']; ?>" class="form-control" required>
             </div>
-            <button type="submit" name="update" class="btn btn-success">Update</button>
+            <div class="d-flex gap-2">
+            <a href="lembur.php" class="btn btn-secondary">Kembali</a>
+                <button type="submit" name="update" class="btn btn-success">Update</button>
+            </div>
         </form>
     </div>
 </div>

@@ -26,7 +26,7 @@ $total = $data['tarif_per_jam'] * $data['jumlah_jam'];
     <?php include 'includes/sidebar.php'; ?>
     <div class="p-4 w-100">
         <h3>Detail Tarif Lembur</h3>
-        <a href="lembur.php" class="btn btn-secondary mb-3">← Kembali</a>
+
 
         <div class="card">
             <div class="card-body">
@@ -36,6 +36,8 @@ $total = $data['tarif_per_jam'] * $data['jumlah_jam'];
                 <p class="card-text">Total Lembur: <strong>Rp <?= number_format($total, 0, ',', '.'); ?></strong></p>
             </div>
         </div>
+        <a href="rating.php" class="btn btn-outline-secondary mt-4">
+                    <i class="bi bi-arrow-left"></i>← Kembali
     </div>
 </div>
 </body>

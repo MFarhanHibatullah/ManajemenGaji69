@@ -3,7 +3,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Dashboard - Sistem Manajemen Gaji</title>
+    <title>Dashboard - Farhan</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         .kartu-karyawan {
@@ -16,20 +16,36 @@
             object-fit: cover;
             border-radius: 10px;
         }
+        .marquee-box {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            padding: 10px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
 <div class="d-flex">
     <?php include 'includes/sidebar.php'; ?>
     <div class="p-4 w-100">
-        <h3>Selamat Datang di Sistem Manajemen Gaji</h3>
+
+        <!-- Marquee tanpa gambar -->
+        <div class="marquee-box">
+            <h4>
+            <marquee scrollamount="5">👋 Selamat datang di Sistem Manajemen Gaji Karyawan</marquee>
+            </h4>
+        </div>
+
+        <h3 class="text-center">Selamat Datang di PT.FARHANTEC INNOVASI</h3>
         <p>Daftar karyawan terbaru:</p>
         <div class="d-flex flex-wrap">
             <?php
             $query = mysqli_query($conn, "SELECT karyawan.*, jabatan.nama_jabatan 
                                           FROM karyawan 
                                           JOIN jabatan ON karyawan.jabatan_id = jabatan.id 
-                                          ORDER BY karyawan.id DESC LIMIT 5");
+                                          ORDER BY karyawan.id DESC LIMIT 10");
 
             $bulan_ini = date('Y-m');
 
@@ -54,5 +70,11 @@
         </div>
     </div>
 </div>
+
+<!-- Footer sederhana -->
+<footer class="bg-light text-center text-muted py-3 mt-4 w-100">
+    <small>&copy; <?php echo date('Y'); ?> PT. FARHANTEC INNOVASI - All rights reserved.</small>
+</footer>
+
 </body>
 </html>

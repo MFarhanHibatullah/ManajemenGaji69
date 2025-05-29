@@ -25,8 +25,9 @@ $row = mysqli_fetch_assoc($data);
                 <label>Gaji Pokok</label>
                 <input type="number" name="gaji_pokok" class="form-control" value="<?= $row['gaji_pokok'] ?>" required>
             </div>
-            <button type="submit" name="update" class="btn btn-primary">Update</button>
             <a href="jabatan.php" class="btn btn-secondary">Kembali</a>
+            <button type="submit" name="update" class="btn btn-primary">Update</button>
+            
         </form>
 
         <?php
